@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
+import ShipmentListPage from '../features/shipments/pages/ShipmentListPage';
 
 function HomePage() {
   return (
@@ -27,16 +28,16 @@ function HomePage() {
   );
 }
 
-function ShipmentsPlaceholder() {
+function ShipmentDetailsPlaceholder() {
   return (
     <div className="min-h-screen bg-slate-50 p-8 text-slate-800">
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-sm border border-slate-200 p-8">
-        <h2 className="text-xl font-bold text-slate-900 mb-2">Shipment Dashboard Route (/shipments)</h2>
+        <h2 className="text-xl font-bold text-slate-900 mb-2">Shipment Details Workspace</h2>
         <p className="text-sm text-slate-600 mb-4">
-          Ready for component implementation (Virtualized Table, Web Worker, and Document Verification).
+          Details workspace route (Document Viewer &amp; Dynamic Form with OCR Provenance) will be hooked up next.
         </p>
-        <Link to="/" className="text-sm text-blue-600 hover:underline">
-          &larr; Back to Home
+        <Link to="/shipments" className="text-sm font-medium text-blue-600 hover:underline">
+          &larr; Back to Shipments Listing
         </Link>
       </div>
     </div>
@@ -47,8 +48,8 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/shipments" element={<ShipmentsPlaceholder />} />
-      <Route path="/shipments/:shipmentId" element={<ShipmentsPlaceholder />} />
+      <Route path="/shipments" element={<ShipmentListPage />} />
+      <Route path="/shipments/:shipmentId" element={<ShipmentDetailsPlaceholder />} />
     </Routes>
   );
 }

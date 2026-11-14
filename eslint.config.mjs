@@ -26,6 +26,7 @@ export default [
         requestAnimationFrame: 'readonly',
         cancelAnimationFrame: 'readonly',
         ResizeObserver: 'readonly',
+        URL: 'readonly',
         Worker: 'readonly',
         importScripts: 'readonly',
         self: 'readonly',
