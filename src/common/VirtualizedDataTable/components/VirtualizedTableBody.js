@@ -29,6 +29,7 @@ export default function VirtualizedTableBody({
   topSpacerHeight,
   bottomSpacerHeight
 }) {
+
   return (
     <tbody
       ref={containerRef}
@@ -36,25 +37,47 @@ export default function VirtualizedTableBody({
       className="block overflow-y-auto"
       style={{ height: height - headerHeight }}
     >
-      <SpacerRow
-        height={topSpacerHeight}
-        columnCount={columns.length}
-      />
-
-      {visibleList.map(({ item, virtualIndex }) => (
-        <VirtualizedRow
-          key={item.id ?? virtualIndex}
-          item={item}
-          columns={columns}
-          virtualIndex={virtualIndex}
-          rowHeight={rowHeight}
-        />
-      ))}
-
-      <SpacerRow
-        height={bottomSpacerHeight}
-        columnCount={columns.length}
-      />
+      {visibleList.length === 0 ? (
+        <tr className="table w-full table-fixed">
+          <td
+            colSpan={columns.length}
+            className="h-[150px] text-center align-middle"
+          >
+            <div
+              role="status"
+              aria-live="polite"
+              className="flex flex-col items-center justify-center gap-2"
+            >
+              <span className="text-sm font-medium text-slate-600">
+                No matching records found
+              </span>
+            </div>
+          </td>
+        </tr>
+      ) : (
+        <>
+          <SpacerRow
+            height={topSpacerHeight}
+            columnCount={columns.length}
+          />
+  
+          {visibleList.map(({ item, virtualIndex }) => (
+            <VirtualizedRow
+              key={item.id ?? virtualIndex}
+              item={item}
+              columns={columns}
+              virtualIndex={virtualIndex}
+              rowHeight={rowHeight}
+            />
+          ))}
+  
+          <SpacerRow
+            height={bottomSpacerHeight}
+            columnCount={columns.length}
+          />
+        </>
+      )}
     </tbody>
   );
+  
 }
