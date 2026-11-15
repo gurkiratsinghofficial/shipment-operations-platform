@@ -4,17 +4,7 @@ export default function DataTableFooter({
     totalCount
   }) {
     return (
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-end",
-          padding: "2px 12px",
-          borderTop: "1px solid #ddd",
-          background: "#f9f9f9",
-          color: "#555"
-        }}
-      >
+      <div className="flex items-center justify-end py-0.5 px-3 border-t border-[#ddd] bg-[#f9f9f9] text-[#555]">
         <span>
           Displaying {filteredCount} of {totalCount} records
         </span>
@@ -23,4 +13,3 @@ export default function DataTableFooter({
       </div>
     );
   }
-  

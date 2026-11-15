@@ -9,15 +9,7 @@ export default function DataTableHeader({
     onClearFilter
   }) {
     return (
-      <thead
-        style={{
-          display: "table",
-          width: "100%",
-          tableLayout: "fixed",
-          background: "#333",
-          color: "white"
-        }}
-      >
+      <thead className="table w-full table-fixed bg-[#333] text-white">
         <tr style={{ height: headerHeight }}>
           {columns.map((column) => (
             <th
@@ -30,31 +22,12 @@ export default function DataTableHeader({
                     : "descending"
                   : "none"
               }
-              style={{
-                width: column.width || "auto",
-                padding: 8,
-                textAlign: "left",
-                overflow: "hidden",
-                verticalAlign: "top",
-                boxSizing: "border-box"
-              }}
+              className="p-2 text-left overflow-hidden align-top box-border"
+              style={{ width: column.width || "auto" }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  gap: 5
-                }}
-              >
+              <div className="flex flex-col justify-start gap-[5px]">
                 {/* Column title and sorting */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 5
-                  }}
-                >
+                <div className="flex items-center gap-[5px]">
                   <span>{column.header}</span>
   
                   {column.sortable && (
@@ -62,12 +35,7 @@ export default function DataTableHeader({
                       type="button"
                       onClick={() => onSort(column.key)}
                       aria-label={`Sort by ${column.header}`}
-                      style={{
-                        cursor: "pointer",
-                        background: "transparent",
-                        border: "none",
-                        color: "white"
-                      }}
+                      className="cursor-pointer bg-transparent border-none text-white"
                     >
                       <span aria-hidden="true">
                         {sortConfig.key !== column.key
@@ -82,13 +50,7 @@ export default function DataTableHeader({
   
                 {/* Column filter */}
                 {column.filter && (
-                  <div
-                    style={{
-                      position: "relative",
-                      width: "100%",
-                      minWidth: 0
-                    }}
-                  >
+                  <div className="relative w-full min-w-0">
                     <input
                       type="text"
                       value={filterDraft[column.key] || ""}
@@ -97,15 +59,7 @@ export default function DataTableHeader({
                       onChange={(event) =>
                         onFilter(column.key, event.target.value)
                       }
-                      style={{
-                        width: "100%",
-                        minWidth: 0,
-                        boxSizing: "border-box",
-                        padding: 3,
-                        paddingRight: 18,
-                        color: "#111",
-                        background: "white"
-                      }}
+                      className="w-full min-w-0 box-border p-[3px] pr-[18px] text-[#111] bg-white"
                     />
   
                     {Boolean(filterDraft[column.key]) && (
@@ -113,25 +67,7 @@ export default function DataTableHeader({
                         type="button"
                         onClick={() => onClearFilter(column.key)}
                         aria-label={`Clear ${column.header} filter`}
-                        style={{
-                          position: "absolute",
-                          right: 4,
-                          top: "50%",
-                          transform: "translateY(-50%)",
-                          zIndex: 1,
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          width: 14,
-                          height: 14,
-                          padding: 0,
-                          border: "none",
-                          background: "transparent",
-                          color: "#555",
-                          fontSize: 14,
-                          lineHeight: 1,
-                          cursor: "pointer"
-                        }}
+                        className="absolute right-1 top-1/2 -translate-y-1/2 z-[1] flex items-center justify-center size-3.5 p-0 border-none bg-transparent text-[#555] text-sm leading-none cursor-pointer"
                       >
                         <span aria-hidden="true">×</span>
                       </button>
@@ -145,4 +81,3 @@ export default function DataTableHeader({
       </thead>
     );
   }
-  

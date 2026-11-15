@@ -84,14 +84,8 @@ export default function VirtualizedDataTable({
 
   return (
     <div
-      style={{
-        height,
-        width,
-        background: "white",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column"
-      }}
+      className="bg-white overflow-hidden flex flex-col"
+      style={{ height, width }}
     >
       {workerError && (
         <div role="alert">
@@ -103,20 +97,14 @@ export default function VirtualizedDataTable({
         aria-label="Users DataTable"
         aria-rowcount={resultIndices.length + 1}
         aria-colcount={columns.length}
-        style={{
-          width: "100%",
-          tableLayout: "fixed",
-          borderCollapse: "collapse"
-        }}
+        className="w-full table-fixed border-collapse"
       >
         {/* Column widths */}
-        <colgroup style={{ display: "none" }}>
+        <colgroup className="hidden">
           {columns.map((column) => (
             <col
               key={column.key}
-              style={{
-                width: column.width || "auto"
-              }}
+              style={{ width: column.width || "auto" }}
             />
           ))}
         </colgroup>

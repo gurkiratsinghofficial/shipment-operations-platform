@@ -7,16 +7,12 @@ function SpacerRow({ height, columnCount }) {
   return (
     <tr
       aria-hidden="true"
-      style={{ display: "block" }}
+      className="block"
     >
       <td
         colSpan={columnCount}
-        style={{
-          height,
-          padding: 0,
-          border: 0,
-          display: "block"
-        }}
+        className="p-0 border-0 block"
+        style={{ height }}
       />
     </tr>
   );
@@ -37,11 +33,8 @@ export default function VirtualizedTableBody({
     <tbody
       ref={containerRef}
       onScroll={handleScroll}
-      style={{
-        display: "block",
-        height: height - headerHeight,
-        overflowY: "auto"
-      }}
+      className="block overflow-y-auto"
+      style={{ height: height - headerHeight }}
     >
       <SpacerRow
         height={topSpacerHeight}

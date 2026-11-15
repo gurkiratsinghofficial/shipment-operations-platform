@@ -9,27 +9,16 @@ export default function VirtualizedRow({
       <tr
         key={item.id ?? virtualIndex}
         aria-rowindex={virtualIndex + 2}
-        style={{
-          display: "table",
-          width: "100%",
-          tableLayout: "fixed",
-          height: rowHeight,
-          background:
-            virtualIndex % 2 === 0 ? "#f5f5f5" : "white"
-        }}
+        className={`table w-full table-fixed ${
+          virtualIndex % 2 === 0 ? "bg-neutral-100" : "bg-white"
+        }`}
+        style={{ height: rowHeight }}
       >
         {columns.map((column) => (
           <td
             key={column.key}
-            style={{
-              width: column.width || "auto",
-              padding: 8,
-              borderBottom: "1px solid #ddd",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-              boxSizing: "border-box"
-            }}
+            className="p-2 border-b border-[#ddd] overflow-hidden text-ellipsis whitespace-nowrap box-border"
+            style={{ width: column.width || "auto" }}
           >
             {typeof column.renderCell === "function"
               ? column.renderCell({
@@ -44,4 +33,3 @@ export default function VirtualizedRow({
       </tr>
     );
   }
-  
