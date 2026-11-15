@@ -66,7 +66,9 @@ const TextPicker = ({
     position: "relative",
     transform: rotate ? `rotate(${rotate}deg)` : undefined,
     height: "100%",
-    overflow: "scroll",
+    maxHeight: "100%",
+    minHeight: 0,
+    overflow: "auto",
     display: "block",
   };
   const imageStyle = {

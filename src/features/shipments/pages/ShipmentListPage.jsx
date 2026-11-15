@@ -59,28 +59,17 @@ export default function ShipmentListPage() {
   const data = useMemo(() => generateShipments(100000), []);
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6 flex flex-col items-center">
+    <div className="flex-1 min-h-0 overflow-auto bg-slate-50 p-6 flex flex-col items-center">
       <div className="w-full max-w-7xl flex flex-col gap-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-slate-900">Shipments Dashboard</h1>
-            <p className="text-sm text-slate-500">
-              High-volume virtualized listing (100,000 records) powered by Web Worker
-            </p>
-          </div>
-          <Link
-            to="/"
-            className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
-          >
-            &larr; Back to Home
-          </Link>
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900">Shipments Dashboard</h1>
         </div>
 
         <div className="border border-slate-300 rounded-lg overflow-hidden shadow-xs bg-white">
           <VirtualizedDataTable
             data={data}
             columns={COLUMNS}
-            height={500}
+            height={450}
             width="100%"
             rowHeight={42}
           />

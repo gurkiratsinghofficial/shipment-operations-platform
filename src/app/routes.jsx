@@ -1,11 +1,12 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
+import AppLayout from './AppLayout';
 import ShipmentListPage from '../features/shipments/pages/ShipmentListPage';
 import ShipmentDetailsPage from '../features/shipments/pages/ShipmentDetailsPage';
 
 function HomePage() {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 text-slate-800">
+    <div className="flex-1 min-h-0 overflow-auto flex flex-col items-center justify-center p-6 text-slate-800">
       <div className="max-w-md w-full bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
         <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4 font-bold text-xl">
           SO
@@ -32,9 +33,11 @@ function HomePage() {
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/shipments" element={<ShipmentListPage />} />
-      <Route path="/shipments/:shipmentId" element={<ShipmentDetailsPage />} />
+      <Route element={<AppLayout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shipments" element={<ShipmentListPage />} />
+        <Route path="/shipments/:shipmentId" element={<ShipmentDetailsPage />} />
+      </Route>
     </Routes>
   );
 }
