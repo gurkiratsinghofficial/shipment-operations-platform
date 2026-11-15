@@ -42,7 +42,6 @@ const COLUMNS = [
     header: 'ETA',
     width: '120px',
     sortable: true,
-    filter: true,
     renderCell: ({ value }) => formatDate(value),
   },
   {

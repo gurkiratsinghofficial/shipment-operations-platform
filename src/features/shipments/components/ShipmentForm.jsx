@@ -19,7 +19,7 @@ export default function ShipmentForm({ shipmentId }) {
             id="shipment-id"
             name="shipmentId"
             type="text"
-            readOnly
+            disabled
             defaultValue={shipmentId}
             className={readOnlyInputClassName}
           />

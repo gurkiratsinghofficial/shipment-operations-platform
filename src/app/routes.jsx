@@ -9,14 +9,11 @@ function HomePage() {
     <div className="flex-1 min-h-0 overflow-auto flex flex-col items-center justify-center p-6 text-slate-800">
       <div className="max-w-md w-full bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
         <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4 font-bold text-xl">
-          SO
+          OP
         </div>
         <h1 className="text-2xl font-bold text-slate-900 mb-2">
           Shipment Operations &amp; Document Verification Platform
         </h1>
-        <p className="text-sm text-slate-600 mb-6">
-          React 19 + Webpack 5 + Tailwind CSS application setup complete and ready.
-        </p>
         <div className="flex flex-col gap-2">
           <Link
             to="/shipments"
