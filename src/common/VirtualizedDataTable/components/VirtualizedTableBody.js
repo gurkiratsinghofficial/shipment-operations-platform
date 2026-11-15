@@ -27,7 +27,8 @@ export default function VirtualizedTableBody({
   rowHeight,
   visibleList,
   topSpacerHeight,
-  bottomSpacerHeight
+  bottomSpacerHeight,
+  isLoading
 }) {
 
   return (
@@ -37,7 +38,21 @@ export default function VirtualizedTableBody({
       className="block overflow-y-auto"
       style={{ height: height - headerHeight }}
     >
-      {visibleList.length === 0 ? (
+      {isLoading ? (
+          <tr className="table w-full table-fixed">
+            <td
+              colSpan={columns.length}
+              className="h-[150px] text-center align-middle"
+            >
+              <span
+                role="status"
+                className="text-sm text-slate-500"
+              >
+                Loading records...
+              </span>
+            </td>
+          </tr>
+      ) : visibleList.length === 0 ? (
         <tr className="table w-full table-fixed">
           <td
             colSpan={columns.length}

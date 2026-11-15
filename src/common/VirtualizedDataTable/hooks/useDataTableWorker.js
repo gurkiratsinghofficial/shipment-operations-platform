@@ -13,6 +13,7 @@ export function useDataTableWorker({
   const [workerReady, setWorkerReady] = useState(false);
   const [resultIndices, setResultIndices] = useState([]);
   const [workerError, setWorkerError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Effect 1: Manage worker lifecycle
   useEffect(() => {
@@ -42,6 +43,7 @@ export function useDataTableWorker({
         requestId === requestIdRef.current
       ) {
         setResultIndices(indices);
+        setIsLoading(false);
       }
 
       if (type === "ERROR") {
@@ -83,6 +85,7 @@ export function useDataTableWorker({
       })
     );
 
+    setIsLoading(true);
     worker.postMessage({
       type: "QUERY",
       requestId,
@@ -97,6 +100,7 @@ export function useDataTableWorker({
   return {
     workerReady,
     resultIndices,
-    workerError
+    workerError,
+    isLoading
   };
 }

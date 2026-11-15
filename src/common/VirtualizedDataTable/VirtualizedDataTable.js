@@ -38,12 +38,13 @@ export default function VirtualizedDataTable({
   // Web Worker communication
   const {
     resultIndices,
-    workerError
+    workerError,
+    isLoading
   } = useDataTableWorker({
     data,
     columns,
     filters,
-    sortConfig
+    sortConfig,
   });
 
   // Virtualization logic
@@ -129,6 +130,7 @@ export default function VirtualizedDataTable({
           visibleList={visibleList}
           topSpacerHeight={topSpacerHeight}
           bottomSpacerHeight={bottomSpacerHeight}
+          isLoading={isLoading}
         />
       </table>
       <DataTableFooter
