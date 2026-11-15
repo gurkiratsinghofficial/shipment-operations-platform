@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import TextPicker from '../../../common/TextPicker/TextPicker';
+import ShipmentForm from '../components/ShipmentForm';
 import { generateOCR } from '../data/generateOCR';
 import blImage from '../data/bl.png';
 
@@ -46,14 +47,9 @@ export default function ShipmentDetailsPage() {
           </div>
         </section>
 
-        <section className="w-1/2 min-h-0 overflow-auto p-8 text-slate-800">
-          <div className="max-w-lg">
-            <h2 className="text-xl font-bold text-slate-900 mb-2">Shipment {shipmentId}</h2>
-            <p className="text-sm text-slate-600">
-              Dynamic Form with OCR Provenance will be hooked up next.
-              <input type='text' />
-            </p>
-          </div>
+        <section className="w-1/2 min-h-0 overflow-hidden flex flex-col p-8 text-slate-800">
+          <h2 className="shrink-0 text-xl font-bold text-slate-900 mb-4">Shipment {shipmentId}</h2>
+          <ShipmentForm shipmentId={shipmentId} />
         </section>
       </div>
     </div>
